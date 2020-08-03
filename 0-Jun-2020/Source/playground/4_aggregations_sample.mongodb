@@ -1,0 +1,117 @@
+// aggregation examples
+// this requires the sample_mflix db
+
+// sample pipeline -> match, group, project
+
+// group movies by type and count each type
+db.movies.aggregate(
+    {
+        $group :{
+            _id:"$type",
+            count: {
+                $sum:1
+            }
+        }
+    }
+)
+/*
+{ "_id" : "movie", "count" : 23285 }
+{ "_id" : "series", "count" : 254 }
+*/
+
+// group movies by the no of awards won
+db.movies.aggregate(
+    [
+        {
+            $match : {
+                type:"movie"
+            }
+        },
+        {
+            $group :{
+                _id: "$awards.wins",
+                count : {
+                    $sum : 1
+                }
+            }
+        },
+    ]
+    
+)
+
+// number of movies per year (movies released 2000 and up)
+db.movies.aggregate(
+    [
+        {
+            $match:{
+                year: {
+                    $gte:2000
+                }
+            }
+        },
+        {
+            $group:{
+                _id:"$year",
+                count : {
+                    $sum : 1
+                }
+            }
+        },
+        {
+            $sort: {
+                _id:-1
+            }
+        }
+    ]
+)
+
+// using aggregate to do a lookup operation between 2 collections
+db.movies.aggregate(
+    [
+        {
+            $match:{
+                title:"Regeneration"
+            }
+        },
+        {
+            $lookup: {
+                from: 'comments',
+                localField: '_id',
+                foreignField: 'movie_id',
+                as: 'movie_comments'
+            }
+        },
+        {
+            $project:{
+                _id:0,
+                title:1,
+                "movie_comments.text":1,
+                "movie_comments.email":1,
+            }
+        }
+    ]
+)
+
+// db.movies.find(
+//     { 
+//         $and :[
+//             {
+//                 "awards.wins": {
+//                     $gte:100
+//                 }
+//             },
+//             {
+//                 "awards.wins": {
+//                     $lte:106
+//                 }
+//             },
+//         ]
+        
+//     },
+//     {
+//         _id:0,
+//         title:1,
+//         "awards.wins":1
+//     }
+// )
+

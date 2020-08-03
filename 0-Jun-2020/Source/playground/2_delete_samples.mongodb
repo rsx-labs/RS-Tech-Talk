@@ -1,0 +1,11 @@
+// this uses the person collection
+// ************************ Delete *********************
+
+// delete all - do not run
+//db.person.deleteMany({})
+
+//db.person.find({"employeeId":129})
+
+db.person.deleteOne({"employeeId":129})
+
+// db.person.find({"employeeId":129})

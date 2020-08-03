@@ -1,0 +1,59 @@
+// this uses the person collection at localhost
+
+// ************************ U P D A T E **************************************
+
+
+// update a person
+db.person.update(
+    { employeeId : 124},
+    {
+        $set: { 
+            firstName : "Jane"
+        }
+    }
+)
+
+// update several entries that meet a criteria
+db.person.updateMany(
+    { "employeeId" : { $gt:120}},
+    {
+        $set : { "contract_signed" : true}
+    }
+)
+
+// insert elements to an array
+db.person.updateOne(
+    {
+        "employeeId" : 140
+    },
+    {
+        $push : {
+            "hobbies":"sleeping"
+        }
+    }
+)
+
+// update age
+db.person.update(
+    { employeeId:130},
+    {
+        $inc:{
+            age:1
+        }
+    }
+)
+
+// db.person.updateMany (
+//     { "address.0.type": "permanent"},
+//     {
+//         $set : { "address.0.address": "New high 2345"}
+//     }
+// )
+
+// db.person.find({
+//     "employeeId": {
+//         $gte:140
+//     }
+// })
+
+

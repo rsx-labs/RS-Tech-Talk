@@ -1,0 +1,88 @@
+// this uses the db at localhost
+
+// ******************* I N S E R T ***************************************
+// insert 1 doc
+db.person.insert({ 
+    employeeId : 124, 
+    firstName : "Jamyr", 
+    lastName : "Feryl", 
+    address : [ 
+        { 
+            type : "permanent", 
+            address : "07 Down Rd" 
+        }, 
+        { 
+            type : "office", 
+            address : "678 3rd Yawkey Rd PH" 
+        } 
+    ] 
+})
+
+//insert many doc
+db.person.insertMany([
+    { 
+        employeeId : 125, 
+        firstName : "Diane", 
+        lastName : "Santino", 
+        address : [ 
+            { 
+                type : "permanent", 
+                address : "456 Lipstick Hway" 
+            }, 
+            { 
+                type : "office", 
+                address : "678 3rd Yawkey Rd PH" 
+            } 
+        ] 
+    },
+    { employeeId : 126, firstName : "George", lastName : "Fullman", address : [ { type : "permanent", address : "89 Whiskey Blvd" }]},
+    { employeeId : 127, firstName : "Ellen", lastName : "Riborran", address : [ { type : "office", address : "678 3rd Yawkey Rd PH" } ] }
+])
+
+// count the number of person
+db.person.find().count()
+
+//insert many doc with new fields
+db.person.insertMany([
+    { employeeId : 128, firstName : "Johnny", lastName : "Grantt", address : [ { type : "permanent", address : "456 Lipstick Hway" }, { type : "office", address : "678 3rd Yawkey Rd PH" } ] },
+    { employeeId : 129, firstName : "Scarlett", lastName : "Hutchins", "age": 30, address : [ { type : "permanent", address : "89 Whiskey Blvd" }]},
+    { 
+        employeeId : 130, 
+        firstName : "Elon", 
+        lastName : "Crammerson", 
+        age: 35, 
+        address : [
+            { type : "office", address : "678 3rd Yawkey Rd PH" } 
+        ], 
+        mobileno:"09556745656" 
+    }
+])
+
+//insert a new doc with a new array field
+db.person.insert({
+    employeeId : 140, 
+    firstName : "James", 
+    lastName : "Romero", 
+    address : [ 
+        { 
+            type : "permanent", 
+            address : "111 Drinking Hwy" 
+        }, 
+        { 
+            type : "office", 
+            address : "678 3rd Yawkey Rd PH" 
+        } 
+    ],
+    hobbies:[
+        "eating",
+        "drinking"
+    ] 
+})
+
+// count
+db.person.find().count()
+
+//display them all
+db.person.find()
+
+

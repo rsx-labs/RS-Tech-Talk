@@ -1,0 +1,188 @@
+// this uses the sample_mflix
+//show dbs
+
+// users
+db.users.find().limit(10)
+
+db.users.find({
+    name: {
+        $regex:/Lannister$/
+    }
+})
+
+// display  5 movies
+db.movies.find().limit(5)
+db.movies.find().limit(5).pretty()
+
+db.movies.find({
+    year: {
+        $gte:2000
+    }
+})
+
+db.movies.find(
+    {},
+    {
+        title:1,
+        _id:0
+    }
+).limit(10)
+
+
+// projection
+db.movies.find(
+    {},
+    {"title":1}
+).limit(5)
+
+//projection and filter
+// movies with more than 1 wins
+db.movies.find(
+    {
+        "awards.wins" :{
+            $gte:2
+        }
+    },
+    {
+        "_id": 0 ,
+        "title":1,
+        "awards.wins":1
+    }
+).limit(5)
+
+db.movies.find({
+    type:"movie",
+    "tomatoes.viewer.rating": {
+        $gte:4
+    },
+    "tomatoes.viewer.numReviews":{
+        $gte:100
+    }
+},
+{
+    _id:0,
+    title:1,
+    type:1,
+    "tomatoes.viewer.rating":1,
+    "tomatoes.viewer.numReviews":1
+})
+
+//movies from germany (and possibly another country)
+db.movies.find({
+    "countries":"Germany"
+},
+{
+    title:1,
+    countries:1,
+    _id:0
+})
+
+//movies from germany only
+db.movies.find({
+    "countries":["Germany"]
+},
+{
+    title:1,
+    countries:1,
+    _id:0
+})
+
+
+db.movies.find({
+    title: {
+        $regex: /^Carnival/
+    }
+})
+
+db.movies.find({
+    "countries":["Germany"],
+    title: {
+        $regex:/^Carnival/
+    }
+},
+{
+    title:1,
+    countries:1,
+    _id:0
+})
+
+// from france and germany
+db.movies.find({
+    $or : [
+        { countries:["Germany","France"]},
+        { countries:["France","Germany"]}
+    ]
+},
+{
+    title:1,
+    countries:1,
+    _id:0
+})
+
+// Germany only
+db.movies.find({
+    $and :[
+        {
+            countries:{
+                $size:1
+            }
+        },
+        {
+            countries:["Germany"]
+        }
+    ]
+},
+{
+    title:1,
+    countries:1,
+    _id:0
+})
+
+//at leaset came from france and germany
+db.movies.find({
+    countries:{
+        $all:["France","Germany"]
+    }
+},
+{
+    title:1,
+    countries:1,
+    _id:0
+})
+
+//at leaset came from france or germany
+db.movies.find({
+    $or :[
+        {
+           countries:"Germany"
+        },
+        {
+            countries:"France"
+        }
+    ]
+},
+{
+    title:1,
+    countries:1,
+    _id:0
+})
+
+//at leaset came from france or germany with more than 3 countries
+db.movies.find({
+    $or :[
+        {
+           countries:"Germany"
+        },
+        {
+            countries:"France"
+        }
+    ],
+    countries:{
+        $size:3
+    }
+},
+{
+    title:1,
+    countries:1,
+    _id:0
+})
