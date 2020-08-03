@@ -1,7 +1,9 @@
 # RS Tech Talk Series
+
 ![Tech Talk Image](./_assets/techtalk.jpg)
 
 # Talks
+
 | Schedule | Topic | Speaker |
 | --- | --- | --- |
 | June 2020 | MongoDB Primer | Marvin Trilles |
