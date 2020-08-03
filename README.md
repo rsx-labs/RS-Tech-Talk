@@ -1,5 +1,3 @@
-# RS Tech Talk Series
-
 ![Tech Talk Image](https://www.dropbox.com/s/m5pbz4wefxp1fya/TechTalks.png?raw=1)
 
 # Talks
