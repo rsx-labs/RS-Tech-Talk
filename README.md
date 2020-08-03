@@ -1,6 +1,6 @@
 # RS Tech Talk Series
 
-![Tech Talk Image](https://github.com/rsx-labs/RS-Tech-Talk/blob/master/_assets/techtalk.jpg)
+![Tech Talk Image](_assets/techtalk.jpg)
 
 # Talks
 
