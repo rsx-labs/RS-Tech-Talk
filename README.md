@@ -1,6 +1,6 @@
 # RS Tech Talk Series
 
-![Tech Talk Image](./_assets/techtalk.jpg)
+![Tech Talk Image](_assets/techtalk.jpg?raw=true)
 
 # Talks
 
