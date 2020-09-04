@@ -6,4 +6,4 @@
 | --- | --- | --- |
 | June 2020 | MongoDB Primer | Marvin Trilles |
 | July 2020 | Dapper ORM for .Net | Christopher Guevarra |
-| August 2020 | TBD | TBD |
+| August 2020 | Alibaba Cloud | Marvin Trilles |
