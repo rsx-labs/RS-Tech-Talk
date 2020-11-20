@@ -8,3 +8,4 @@
 | July 2020 | Dapper ORM for .Net | Christopher Guevarra |
 | August 2020 | Alibaba Cloud | Marvin Trilles |
 | September 2020 | Azure VM | Rosemarie Collado |
+| October 2020 | ReactNative - The Basics | Hyacinth Amarles |
