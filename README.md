@@ -9,3 +9,4 @@
 | August 2020 | Alibaba Cloud | Marvin Trilles |
 | September 2020 | Azure VM | Rosemarie Collado |
 | October 2020 | ReactNative - The Basics | Hyacinth Amarles |
+| December 2020 | Release Notes Generator Tool & Hardware Test Report Generator Tool | Gian Carlo Camilo |
